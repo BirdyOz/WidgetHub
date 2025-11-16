@@ -1,6 +1,6 @@
-key: mp_bs_accordion
+key: gb_bs_accordion
 name: Accordion menu system
-category: bootstrap
+category: UI
 instructions: >
   Creates an accordion component with multiple collapsible sections. Compatible
   with both Bootstrap 4 and Bootstrap 5.
@@ -9,7 +9,7 @@ template: >
   <p></p>
 
   <div class="accordion" id="accordion-<%= ID %>"
-  data-widget="mp_bs_accordion_<%= ID %>">
+  data-widget="gb_bs_accordion_<%= ID %>">
     <% for (let i = 0; i < sections; i++) { %>
       <!-- Accordion Item <%= i+1 %> -->
       <div class="card accordion-item">
@@ -38,7 +38,7 @@ template: >
   </div>
 
   <p></p>
-selectors: div[data-widget^="mp_bs_accordion_"]
+selectors: div[data-widget^="gb_bs_accordion_"]
 parameters:
   - name: ID
     value: $RND
