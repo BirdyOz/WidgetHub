@@ -1,0 +1,110 @@
+key: gb-bs-table
+name: Bootstrap table
+instructions: >
+  Create a table with n rows and m columns, with configurable header positions.
+engine: ejs
+template: |
+  <p><br></p>
+  <% if (responsive) { %><div class="table-responsive"><% } %>
+  <table class="table<%= stripes ? ' table-striped' : '' %><%= borders ? ' table-bordered' : '' %><%= hover ? ' table-hover' : '' %><%= narrow ? ' table-sm' : '' %>">
+
+  <% if (desc) { %>
+    <caption class="caption-top">Table: <%= desc %></caption>
+  <% } %>
+
+  <% if (headerMode === 'col' || headerMode === 'both') { %>
+  <thead>
+    <tr>
+      <% if (headerMode === 'both') { %>
+        <th scope="col"></th>
+      <% } %>
+      <% for (let j = 1; j <= ncols; j++) { %>
+        <th scope="col">Header <%= j %></th>
+      <% } %>
+    </tr>
+  </thead>
+  <% } %>
+
+  <tbody class="table-group-divider">
+    <% for (let i = 1; i <= nrows; i++) { %>
+    <tr>
+      <% if (headerMode === 'row' || headerMode === 'both') { %>
+        <th scope="row">Row <%= i %></th>
+      <% } %>
+
+      <% for (let j = 1; j <= ncols; j++) { %>
+        <td>Cell <%= i %>.<%= j %></td>
+      <% } %>
+    </tr>
+    <% } %>
+  </tbody>
+
+  <% if (footer) { %>
+  <tfoot class="table-group-divider">
+    <tr>
+
+      <% if (headerMode === 'row' || headerMode === 'both') { %>
+        <th></th>
+      <% } %>
+
+      <% for (let j = 1; j <= ncols; j++) { %>
+        <th>Footer <%= j %></th>
+      <% } %>
+    </tr>
+  </tfoot>
+  <% } %>
+
+  </table>
+  <% if (responsive) { %></div><% } %>
+  <p><br></p>
+selectors: table.table
+parameters:
+  - name: ncols
+    title: Number of columns
+    value: 4
+    min: 1
+  - name: nrows
+    title: Number of rows
+    value: 3
+    min: 1
+  - name: headerMode
+    title: Header position
+    type: select
+    value: col
+    options:
+      - l: Column headers
+        v: col
+      - l: Row headers
+        v: row
+      - l: Row and column headers
+        v: both
+      - l: No headers
+        v: none
+  - name: desc
+    title: A description for the table
+    type: textfield
+    value: ""
+  - name: footer
+    title: Include footer
+    value: false
+  - name: stripes
+    title: Show stripes
+    value: false
+    bind: hasClass('table-striped')
+  - name: hover
+    title: Highlight row on mouse over
+    value: false
+    bind: hasClass('table-hover')
+  - name: borders
+    title: Show borders
+    value: false
+    bind: hasClass('table-bordered')
+  - name: narrow
+    title: Narrow rows (less padding)
+    value: false
+    bind: hasClass('table-sm')
+  - name: responsive
+    title: Responsive behaviour
+    value: false
+author: Greg Bird <greg.bird.oz@gmail.com>
+version: 1.3.0
