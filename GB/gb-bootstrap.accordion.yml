@@ -1,6 +1,6 @@
-key: gb_bs_accordion
+key: gb_interactive_accordion
 name: Accordion menu system
-category: UI
+category: Interactive
 instructions: >
   Creates an accordion component with multiple collapsible sections. Compatible
   with both Bootstrap 4 and Bootstrap 5.

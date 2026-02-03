@@ -1,5 +1,5 @@
-key: gb-bs-alert
-name: MP Alerts
+key: gb-ui-alert
+name: Bootstrap Alerts
 category: UI
 template: |
   <div class="m-2 alert alert-{{severity}}" role="alert">

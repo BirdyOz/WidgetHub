@@ -1,0 +1,40 @@
+key: gb-bs-tabs
+name: Horizontal tabs menu
+category: interactive
+instructions: >
+  Create a tab menu. You can define the number of tabs (<b>at least 2</b>).
+engine: ejs
+template: |
+  <p><br></p>
+  <div class="whb-tabmenu">
+  <ul class="nav nav-pills mb-0 clearfix w-100" role="tablist">
+  <% for(var i=1; i<=tabs; i++) { %>
+  <li class="nav-item">
+    <a class="nav-link<%= i==1 ? ' active' : '' %>" href="#<%=ID%>_<%=i%>" data-toggle="pill" data-bs-toggle="pill" role="tab"><span> </span><span>Tab<%=i%></span></a>
+  </li> 
+  <% } %>
+  </ul>
+  <div class="tab-content card">
+  <% for(var i=1; i<=tabs; i++) { %>
+  <div class="tab-pane card clearfix p-3 fade <%= i==1 ? ' show active' : '' %>" id="<%=ID%>_<%=i%>" role="tabpanel">
+  <p><%=i%> __LOREM__</p>
+  </div>
+  <% } %>
+  </div>
+  </div> 
+  <p><br></p>
+selectors: div.whb-tabmenu
+unwrap: div.tab-content > div.tab-pane > *
+parameters:
+  - name: tabs
+    value: 2
+    title: Number of tabs
+    min: 1
+    max: 6
+    tip: Too many tabs makes it hard to read on smaller format devices.
+  - partial: ID
+contextmenu:
+  - predicate: li.nav-item
+    actions: moveleft moveright insertafter | remove
+author: Greg Bird <greg.bird.oz@gmail.com>
+version: 1.1.2

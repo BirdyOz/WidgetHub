@@ -1,0 +1,29 @@
+key: gb-box-law
+name: Law or standrad
+category: UI
+instructions: >
+  Add the details of your law or standard
+template: |
+  <!-- Start of Box-Law -->
+  <div class="clearfix container-fluid"></div>
+  <div class="card mt-1 mb-1 clearfix w-100">
+      <div class="card-body">
+          <h4 class="card-title text-danger gb-bs-header"><i aria-hidden="true" class="fa fa-balance-scale"></i>
+              <nolink>{{title}}</nolink>
+          </h4>
+          <div class="gb-bs-content">
+              <p>{{description}}</p>
+          </div>
+      </div>
+  </div>
+  <!-- End of Box-Law -->
+parameters:
+  - name: title
+    value: '[Title goes here]'
+    title: Enter a title
+  - name: description
+    value: '[Description goes here]'
+    title: Enter a brief description
+    type: textarea
+author: Greg Bird <greg.bird.oz@gmail.com>
+version: 1.0.0

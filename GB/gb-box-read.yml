@@ -1,0 +1,29 @@
+key: gb-box-read
+name: Read Box
+category: UI
+instructions: >
+  Add the details of your Learning Activity
+template: |
+  <!-- Start of Box-Read -->
+  <div class="clearfix container-fluid"></div>
+  <div class="card mt-1 mb-1 clearfix w-100">
+      <div class="card-body">
+          <h4 class="card-title text-info gb-bs-header"><i aria-hidden="true" class="fa fa-book"></i>
+              <nolink>{{title}}</nolink>
+          </h4>
+          <div class="gb-bs-content">
+              <p>{{description}}</p>
+          </div>
+      </div>
+  </div>
+  <!-- End of Box-Read -->
+parameters:
+  - name: title
+    value: '[Title goes here]'
+    title: Enter a title for this activity
+  - name: description
+    value: '[Description goes here]'
+    title: Enter a brief description of the activity
+    type: textarea
+author: Greg Bird <greg.bird.oz@gmail.com>
+version: 1.0.0

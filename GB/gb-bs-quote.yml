@@ -1,8 +1,8 @@
-key: gb-bs-quote
-name: Quote
+key: gb-ui-quote
+name: Simple Quote
 category: UI
 instructions: |
-  Create a quote and attribution (author).
+  Create a simple quote and attribution (author).
 template: >
   <!-- Start of Quote -->
   <blockquote class="blockquote m-4 border-light border-light"><i aria-hidden="true" class="fa fa-fw fa-quote-left fa-2x text fa-pull-left" style="color :lightgrey;"></i>

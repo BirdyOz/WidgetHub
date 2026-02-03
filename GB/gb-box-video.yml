@@ -1,20 +1,20 @@
-key: mp-box-video-kaltura
-name: Kaltura Video Box 2 [In development]
+key: gb-box-video-kaltura
+name: Video
 category: UI
 instructions: |
   Add the details of your video
 template: |
   <!-- Start of Video box -->
-  <div class="card mt-1 mb-1 clearfix w-100 mp-video">
+  <div class="card mt-1 mb-1 clearfix w-100 gb-video">
       <div class="card-body">
-          <h4 class="text-danger"><i aria-hidden="true" class="fa fa-play-circle-o"></i> <span class="mp-video-title"> {{title}} ({{#if}}[hours<10]0{{/if}}{{hours}}:{{#if}}[minutes<10]0{{/if}}{{minutes}}) </span></h4>
+          <h4 class="text-danger"><i aria-hidden="true" class="fa fa-play-circle-o"></i> <span class="gb-video-title"> {{title}} ({{#if}}[hours<10]0{{/if}}{{hours}}:{{#if}}[minutes<10]0{{/if}}{{minutes}}) </span></h4>
           <p>{{description}}</p>
-          <div class="mp-video-embed">{{{embed}}}</div>
+          <div class="gb-video-embed">{{{embed}}}</div>
       </div>
   </div>
   <!-- End of Video box -->
-selectors: .mp-video .mp-video-embed
-insertquery: .mp-video .mp-video-embed
+selectors: .gb-video .gb-video-embed
+insertquery: .gb-video .gb-video-embed
 unwrap: '*'
 parameters:
   - name: title
