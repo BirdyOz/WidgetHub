@@ -1,0 +1,113 @@
+key: gb-multibox
+name: Multibox (Read, Think etc.)
+category: UI
+instructions: >
+  Add a learning activity box, choose a predefined style,
+  and optionally include a contextual alert.
+engine: ejs
+
+template: |
+  <p></p>
+
+  <%
+    const styles = {
+      think:    { color: 'success', icon: 'fa-lightbulb' },
+      read:     { color: 'success', icon: 'fa-book-open' },
+      info:     { color: 'info',    icon: 'fa-info-circle' },
+      warning:  { color: 'warning', icon: 'fa-exclamation-triangle' },
+      question: { color: 'primary', icon: 'fa-question-circle' }
+    };
+    const s = styles[boxStyle] || styles.think;
+  %>
+
+  <div class="card mt-1 mb-1 clearfix w-100 gb-box">
+    <div class="card-body">
+      <h4 class="card-title text-<%= s.color %> gb-bs-header">
+        <i aria-hidden="true" class="fa <%= s.icon %>"></i>
+        <nolink><%= title %></nolink>
+      </h4>
+
+      <div class="gb-bs-content">
+        <p><%= description %></p>
+
+        <% if (alertText && alertText.trim()) { %>
+        <div class="alert alert-<%= s.color %> mt-2" role="alert">
+          <%= alertText %>
+        </div>
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+
+  <p></p>
+
+selectors:
+  - div.gb-box
+
+parameters:
+  - name: title
+    title: Enter a title for this activity
+    value: '[Title goes here]'
+
+  - name: description
+    title: Enter a brief description of the activity
+    value: '[Description goes here]'
+    type: textarea
+
+  - name: boxStyle
+    title: Box style
+    type: select
+    value: think
+    options:
+      - { l: 'Think',    v: 'think' }
+      - { l: 'Read',     v: 'read' }
+      - { l: 'Info',     v: 'info' }
+      - { l: 'Warning',  v: 'warning' }
+      - { l: 'Question', v: 'question' }
+    bind:
+      get: |
+        (e) => {
+          const icon = e.find('i.fa').attr('class') || '';
+          if (icon.includes('fa-book-open')) return 'read';
+          if (icon.includes('fa-info-circle')) return 'info';
+          if (icon.includes('fa-exclamation-triangle')) return 'warning';
+          if (icon.includes('fa-question-circle')) return 'question';
+          return 'think';
+        }
+      set: |
+        (e, v) => {
+          const map = {
+            think:    { color: 'success', icon: 'fa-lightbulb' },
+            read:     { color: 'success', icon: 'fa-book-open' },
+            info:     { color: 'info',    icon: 'fa-info-circle' },
+            warning:  { color: 'warning', icon: 'fa-exclamation-triangle' },
+            question: { color: 'primary', icon: 'fa-question-circle' }
+          };
+          const s = map[v] || map.think;
+
+          const h = e.find('h4.gb-bs-header');
+          h.removeClass('text-success text-info text-warning text-primary');
+          h.addClass('text-' + s.color);
+
+          const i = e.find('i.fa');
+          i.removeClass(
+            'fa-lightbulb fa-book-open fa-info-circle fa-exclamation-triangle fa-question-circle'
+          );
+          i.addClass(s.icon);
+
+          const alert = e.find('.alert');
+          if (alert.length) {
+            alert.removeClass('alert-success alert-info alert-warning alert-primary');
+            alert.addClass('alert-' + s.color);
+          }
+        }
+
+  - name: alertText
+    title: Optional alert text
+    type: textarea
+    value: ''
+    tip: If provided, a coloured alert will appear below the description.
+
+author: Greg Bird <greg.bird.oz@gmail.com>
+version: 1.4.0
