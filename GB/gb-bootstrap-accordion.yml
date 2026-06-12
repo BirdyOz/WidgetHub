@@ -6,8 +6,7 @@ instructions: >
   with both Bootstrap 4 and Bootstrap 5.
 engine: ejs
 template: >
-  <p></p>
-
+  <p><br></p>
   <div class="accordion" id="accordion-<%= ID %>"
   data-widget="gb_bs_accordion_<%= ID %>">
     <% for (let i = 0; i < sections; i++) { %>
@@ -24,7 +23,6 @@ template: >
             </button>
           </h3>
         </div>
-
         <!-- Content panel - works with both BS4 and BS5 -->
         <div id="collapse-<%= ID %>-<%= i+1 %>" class="collapse accordion-collapse <%= (i === 0 && firstItemOpen) ? 'show' : '' %>"
              data-parent="#accordion-<%= ID %>" data-bs-parent="#accordion-<%= ID %>"
@@ -36,8 +34,7 @@ template: >
       </div>
     <% } %>
   </div>
-
-  <p></p>
+  <p><br></p>
 selectors: div[data-widget^="gb_bs_accordion_"]
 parameters:
   - name: ID
