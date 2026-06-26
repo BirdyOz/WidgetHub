@@ -15,8 +15,20 @@ WidgetHub lets Moodle authors choose a widget, customize its parameters through 
 
 - `repository/` contains stock/example widgets from WidgetHub. These are useful reference implementations for Bootstrap components, bindings, partials, autocomplete, context menus, and media embeds.
 - `GB/` contains Greg Bird local widgets. These focus on reusable teaching content blocks, Bootstrap alerts, quotes, tables, tabs, accordions, and learning activity cards.
-- `ACBC/` contains brand-specific ACBC widgets: heading, quote, and stat box variants.
-- `MP/` contains Melbourne Polytechnic-oriented snippets and widgets, including activity descriptions, submission instructions, image attribution, step cards, follow-up cards, and table patterns.
+- `ACBC/` may exist locally with brand-specific ACBC widgets: heading, quote, and stat box variants. It is currently ignored by Git and is not part of a fresh clone unless migrated separately.
+- `MP/` may exist locally with Melbourne Polytechnic-oriented snippets and widgets, including activity descriptions, submission instructions, image attribution, step cards, follow-up cards, and table patterns. It is currently ignored by Git and is not part of a fresh clone unless migrated separately.
+
+## Migration Context
+
+Durable project context for future Codex sessions lives in:
+
+- `AGENTS.md`
+- `docs/project-context.md`
+- `docs/setup.md`
+- `docs/decisions.md`
+- `docs/kb-notes.md`
+
+Before rebuilding this project on a new machine, confirm whether ignored local-only directories such as `ACBC/` and `MP/` should be tracked, archived, or copied separately. The exact workflow for installing/importing these widgets into Moodle WidgetHub is not yet documented.
 
 ## WidgetHub YAML Shape
 
@@ -150,4 +162,3 @@ The `MP/` widgets mix institutional snippets and richer authored components:
 6. Keep parameters small, typed, and named after their template purpose.
 7. Include Bootstrap 4 and 5 data attributes for interactive components.
 8. Review any raw HTML fields, embeds, custom bindings, filters, or external dependencies before installing in Moodle.
-
